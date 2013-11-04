@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'commander/import'
+require 'gemme'
+
+program :gemme
+program :version, Gemme::VERSION
+program :description, 'Output a Gemfile configuration for a gem.'
+
+default_command :search
+
+command :search do |c|
+  c.syntax = 'gemme <gem>'
+  c.description = 'Displays Gemfile entry for <gem>'
+  c.action do |args, options|
+    Gemme::GemEntry.config(args.first)
+  end
+end
