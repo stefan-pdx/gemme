@@ -13,6 +13,8 @@ command :search do |c|
   c.syntax = 'gemme <gem>'
   c.description = 'Displays Gemfile entry for <gem>'
   c.action do |args, options|
-    Gemme::GemEntry.config(args.first)
+    args.each do |arg|
+      Gemme::GemEntry.config(arg)
+    end
   end
 end
